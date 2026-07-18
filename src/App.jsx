@@ -1,41 +1,31 @@
-import { Routes, Route, useLocation } from "react-router-dom";
-import Header from "./components/Header";
-import Stepper from "./components/Stepper";
-import SearchPage from "./pages/SearchPage";
-import RoomsPage from "./pages/RoomsPage";
-import GuestPage from "./pages/GuestPage";
-import ReviewPage from "./pages/ReviewPage";
-import ConfirmationPage from "./pages/ConfirmationPage";
-import { BookingProvider } from "./context/BookingContext";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function Layout() {
-  const location = useLocation();
-  const isConfirmation = location.pathname.startsWith("/confirmation");
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
+import HotelList from "./components/HotelList";
+import RoomList from "./components/RoomList";
+import Booking from "./components/Booking";
+import Payment from "./components/Payment";
+import MyBooking from "./components/MyBooking";
+import Search from "./components/Search";
 
+function App() {
   return (
-    <div className="min-h-screen w-full bg-ink-deep text-paper flex items-center justify-center p-4 md:p-8">
-      <div className="w-full max-w-3xl">
-        <Header />
-        {!isConfirmation && <Stepper currentPath={location.pathname} />}
-
-        <div className="mt-6 bg-paper text-ink rounded-2xl shadow-2xl overflow-hidden">
-          <Routes>
-            <Route path="/" element={<SearchPage />} />
-            <Route path="/rooms" element={<RoomsPage />} />
-            <Route path="/guest" element={<GuestPage />} />
-            <Route path="/review" element={<ReviewPage />} />
-            <Route path="/confirmation/:code" element={<ConfirmationPage />} />
-          </Routes>
-        </div>
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/hotels" element={<HotelList />} />
+        <Route path="/rooms/:hotelId" element={<RoomList />} />
+        <Route path="/booking" element={<Booking />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/mybookings" element={<MyBooking />} />
+        <Route path="/search" element={<Search />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default function App() {
-  return (
-    <BookingProvider>
-      <Layout />
-    </BookingProvider>
-  );
-}
+export default App;
