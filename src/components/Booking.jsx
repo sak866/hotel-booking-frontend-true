@@ -37,7 +37,7 @@ function Booking() {
 
         try {
 
-            const response = await axios.post(
+            const response = await api.post(
                 "/api/bookings/create",
                 bookingData
             );
