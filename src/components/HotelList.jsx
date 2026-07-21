@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 function HotelList() {
@@ -38,8 +38,8 @@ function HotelList() {
 
         try {
 
-            const response = await axios.get(
-                `http://localhost:8080/api/hotels/search?location=${location}`
+            const response = await api.get(
+                `/api/hotels/search?location=${location}`
             );
 
             setHotels(response.data);
