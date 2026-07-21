@@ -15,9 +15,9 @@ function RoomList() {
 
     const loadRooms = async () => {
         try {
-            const response = await api.get(
-                '/api/hotels/${hotelId}/rooms`
-            );
+            const response = await api.get(`/api/hotels/${hotelId}/rooms`);
+        
+        
 
             setRooms(response.data);
 
