@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 function MyBooking() {
 
@@ -14,8 +14,8 @@ function MyBooking() {
     const loadBookings = async () => {
     try {
 
-        const response = await axios.get(
-            `http://localhost:8080/api/bookings/user/${user.id}`
+        const response = await api.get(
+            `/api/bookings/user/${user.id}`
         );
 
         setBookings(response.data);
@@ -39,8 +39,8 @@ function MyBooking() {
 
     try {
 
-        await axios.put(
-            `http://localhost:8080/api/bookings/cancel/${bookingId}`
+        await api.put(
+            `/api/bookings/cancel/${bookingId}`
         );
 
         alert("Booking Cancelled Successfully");
