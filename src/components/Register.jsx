@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 
 function Register() {
 
@@ -24,8 +24,8 @@ function Register() {
 
         try {
 
-            await axios.post(
-                "http://localhost:8080/api/users/register",
+            await api.post(
+                "/api/users/register",
                 user
             );
 
