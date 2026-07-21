@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 
 function RoomList() {
@@ -15,8 +15,8 @@ function RoomList() {
 
     const loadRooms = async () => {
         try {
-            const response = await axios.get(
-                `http://localhost:8080/api/hotels/${hotelId}/rooms`
+            const response = await api.get(
+                '/api/hotels/${hotelId}/rooms`
             );
 
             setRooms(response.data);
