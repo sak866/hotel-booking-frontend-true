@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 
 function Booking() {
 
@@ -38,7 +38,7 @@ function Booking() {
         try {
 
             const response = await axios.post(
-                "http://localhost:8080/api/bookings/create",
+                "/api/bookings/create",
                 bookingData
             );
 
