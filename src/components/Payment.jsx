@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 
 function Payment() {
 
@@ -40,8 +40,8 @@ function Payment() {
 
         try {
 
-            await axios.post(
-                "http://localhost:8080/api/payments/process",
+            await api.post(
+                "/api/payments/process",
                 paymentData
             );
 
